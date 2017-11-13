@@ -30,6 +30,11 @@ public class Client {
 	public Client() {
 		accounts = new ArrayList<Account>();
 	}
+	
+	public Client(String name) {
+		this.name = name;
+		accounts = new ArrayList<Account>();
+	}
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "CLIENT_ACCOUNT", joinColumns = { @JoinColumn(name = "CLIENT_ID") }, inverseJoinColumns = { @JoinColumn(name = "ACCOUNT_ID") })

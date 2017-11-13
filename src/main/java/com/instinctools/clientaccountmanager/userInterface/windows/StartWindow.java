@@ -14,10 +14,10 @@ import com.instinctools.clientaccountmanager.services.impl.ClientServiceImpl;
 
 public class StartWindow {
 	public Window getStartWindow() {
-		Window window = new BasicWindow("All clients");
+		final Window window = new BasicWindow("All clients");
 		Panel contentPanel = new Panel(new GridLayout(3));
-		ClientService clientService = new ClientServiceImpl();
-		for (Client client : clientService.getAllUsers()) {
+		final ClientService clientService = new ClientServiceImpl();
+		for (final Client client : clientService.getAllUsers()) {
 			contentPanel.addComponent(new Label(client.getName()));
 			contentPanel.addComponent(new Button("Delete", new Runnable() {
 				@Override
@@ -38,7 +38,7 @@ public class StartWindow {
 			}).setLayoutData(GridLayout.createHorizontallyEndAlignedLayoutData(1)));
 		}
 		contentPanel.addComponent(new Label("Name"));
-		TextBox nameBox = new TextBox();
+		final TextBox nameBox = new TextBox();
 		contentPanel.addComponent(nameBox);
 		contentPanel.addComponent(new Button("Create client", new Runnable() {
 			@Override

@@ -15,33 +15,29 @@ public class ClientDao implements BasicDao<Client> {
 	private Session session;
 
 	@Override
-	public Client create(Integer userId, String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Client create(String name) {
+	public Client create(Client newClient) {
 		session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
-		Client client = new Client();
-		client.setName(name);
-		session.save(client);
+		session.save(newClient);
 		transaction.commit();
-		return client;
+		return newClient;
 	}
 
 	@Override
-	public Client read(Integer id) {
+	public Client get(Integer id) {
 		session = HibernateUtil.getSessionFactory().openSession();
 		Client client = (Client) session.load(Client.class, id);
 		return client;
 	}
 
 	@Override
-	public Client update(Integer id, String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public Client update(Client updatedClient) {
+		session.close();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+		session.saveOrUpdate(updatedClient);
+		transaction.commit();
+		return updatedClient;
 	}
 
 	@Override

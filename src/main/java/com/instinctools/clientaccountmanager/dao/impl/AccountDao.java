@@ -15,15 +15,10 @@ public class AccountDao implements BasicDao<Account> {
 	private Session session;
 
 	@Override
-	public Account create(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Account read(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Account get(Integer id) {
+		session = HibernateUtil.getSessionFactory().openSession();
+		Account account = (Account) session.load(Account.class, id);
+		return account;
 	}
 
 	@Override
@@ -33,27 +28,22 @@ public class AccountDao implements BasicDao<Account> {
 	}
 
 	@Override
-	public Account create(Integer userId, String name) {
+	public Account create(Account newAccount) {
 		session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
-		Client client = session.load(Client.class, userId);
-		Account acc = new Account();
-		acc.setName(name);
-		client.addAccount(acc);
-		session.save(client);
+		session.save(newAccount);
 		transaction.commit();
-		return acc;
+		return newAccount;
 	}
 
 	@Override
-	public Account update(Integer id, String name) {
+	public Account update(Account newAccount) {
+		session.close();
 		session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
-		Account acc = session.load(Account.class, id);
-		acc.setName(name);
-		session.saveOrUpdate(acc);
+		session.saveOrUpdate(newAccount);
 		transaction.commit();
-		return acc;
+		return newAccount;
 	}
 
 	@Override

@@ -2,15 +2,22 @@ package com.instinctools.clientaccountmanager.services;
 
 import java.util.List;
 
+import com.instinctools.clientaccountmanager.model.Account;
 import com.instinctools.clientaccountmanager.model.Client;
 
 public interface ClientService {
 
-	public Client create(String name);
+	Client create(String name);
 
-	public void delete(int id);
+	void delete(int id);
 
-	public Client get(int id);
+	Client get(int id);
 
-	public List<Client> getAllUsers();
+	List<Client> getAllUsers();
+
+	void deleteAccount(Integer id);
+
+	Account updateAccount(Integer id, String name);
+
+	Account createAccount(Integer id, String name);
 }

@@ -2,6 +2,8 @@ package com.instinctools.clientaccountmanager;
 
 import java.io.File;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration; 
  
@@ -14,7 +16,7 @@ public class HibernateUtil {
                     new File("hibernate.cfg.xml")).buildSessionFactory(); 
  
         } catch (Throwable ex) { 
-            System.err.println("Initial SessionFactory creation failed." + ex); 
+        	LogManager.getLogger("Logger").error("Initial SessionFactory creation failed." + ex); 
             throw new ExceptionInInitializerError(ex); 
         } 
     } 

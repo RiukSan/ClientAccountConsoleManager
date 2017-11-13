@@ -4,15 +4,13 @@ import java.util.List;
 
 public interface BasicDao<T> {
 	
-	public T create(Integer userId, String name);
-	
-	public T create(String name);
+	T create(T object);
 
-	public T read(Integer id);
+	T get(Integer id);
 	
-	public T update(Integer id, String name);
+	T update(T object);
 
-	public void delete(int id);
+	void delete(int id);
 	
-	public List<T> readAll();
+	List<T> readAll();
 }
