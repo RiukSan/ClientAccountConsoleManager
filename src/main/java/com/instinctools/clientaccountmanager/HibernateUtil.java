@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
  
 public class HibernateUtil { 
     private static final SessionFactory sessionFactory = buildSessionFactory(); 
+    private static final Logger LOGGER = LogManager.getLogger(SessionFactory.class);
  
     private static SessionFactory buildSessionFactory() { 
         try { 
@@ -16,7 +17,7 @@ public class HibernateUtil {
                     new File("hibernate.cfg.xml")).buildSessionFactory(); 
  
         } catch (Throwable ex) { 
-        	LogManager.getLogger("Logger").error("Initial SessionFactory creation failed." + ex); 
+        	LOGGER.error("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex); 
         } 
     } 
