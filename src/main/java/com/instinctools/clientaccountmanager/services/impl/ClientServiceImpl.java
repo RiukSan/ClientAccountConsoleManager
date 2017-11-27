@@ -47,7 +47,7 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	public List<Client> getAllUsers() {
-		return clientDao.readAll();
+		return clientDao.getAllClients();
 	}
 
 }

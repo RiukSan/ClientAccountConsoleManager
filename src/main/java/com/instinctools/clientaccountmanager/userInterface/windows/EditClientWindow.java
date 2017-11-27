@@ -17,7 +17,7 @@ import com.instinctools.clientaccountmanager.services.impl.ClientServiceImpl;
 public class EditClientWindow {
 	public Window getEditWindow(final int id) {
 		Panel contentPanel = new Panel(new GridLayout(3));
-		ClientService clientService = new ClientServiceImpl();
+		final ClientService clientService = new ClientServiceImpl();
 		Client client = clientService.get(id);
 		final Window window = new BasicWindow("Edit " + client.getName());
 		for (final Account account : client.getAccounts()) {
