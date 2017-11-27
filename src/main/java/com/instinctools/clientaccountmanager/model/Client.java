@@ -67,4 +67,12 @@ public class Client {
 	public void addAccount(Account account) {
 		this.accounts.add(account);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Client obj1 = (Client) obj;
+		return this.getId().equals(obj1.getId());
+	}
+	
+	
 }

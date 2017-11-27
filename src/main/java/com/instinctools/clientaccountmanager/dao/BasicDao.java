@@ -12,5 +12,5 @@ public interface BasicDao<T> {
 
 	void delete(int id);
 	
-	List<T> readAll();
+	List<T> getAllClients();
 }

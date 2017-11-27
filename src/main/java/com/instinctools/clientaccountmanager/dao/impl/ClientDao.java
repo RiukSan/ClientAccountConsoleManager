@@ -50,7 +50,7 @@ public class ClientDao implements BasicDao<Client> {
 	}
 
 	@Override
-	public List<Client> readAll() {
+	public List<Client> getAllClients() {
 		session = HibernateUtil.getSessionFactory().openSession();
 		Query<Client> query = session.createQuery("from Client", Client.class);
 		List<Client> list = query.getResultList();

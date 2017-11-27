@@ -8,7 +8,6 @@ import org.hibernate.Transaction;
 import com.instinctools.clientaccountmanager.HibernateUtil;
 import com.instinctools.clientaccountmanager.dao.BasicDao;
 import com.instinctools.clientaccountmanager.model.Account;
-import com.instinctools.clientaccountmanager.model.Client;
 
 public class AccountDao implements BasicDao<Account> {
 
@@ -22,7 +21,7 @@ public class AccountDao implements BasicDao<Account> {
 	}
 
 	@Override
-	public List<Account> readAll() {
+	public List<Account> getAllClients() {
 		// TODO Auto-generated method stub
 		return null;
 	}
